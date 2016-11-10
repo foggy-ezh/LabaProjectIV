@@ -14,7 +14,7 @@ public class MathExpressionConverter {
     private boolean nextNumberIsNegative;
     private StringBuilder numberContainer = new StringBuilder();
 
-    public void convertExpression(String expression) {
+    public MathExpressionConverter convertExpression(String expression) {
         for (int i = 0; i < expression.length(); i++) {
             char current = expression.charAt(i);
             switch (current) {
@@ -45,6 +45,7 @@ public class MathExpressionConverter {
         while (!operationStack.isEmpty()) {
             convertedExpression.addLast(operationStack.pollLast());
         }
+        return  this;
     }
 
     public double calculateExpression() {

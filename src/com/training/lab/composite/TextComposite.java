@@ -25,4 +25,9 @@ public class TextComposite implements TextComponent {
     public Object getChild(int index) {
         return textComponents.get(index);
     }
+
+    @Override
+    public String toString() {
+        return textComponents.toString();
+    }
 }
