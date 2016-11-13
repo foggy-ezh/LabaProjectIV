@@ -32,6 +32,7 @@ public class Runner {
             LOGGER.log(Level.FATAL, "EMPTY DATA FILE");
             throw new RuntimeException();
         }
+        System.out.println(text);
         ITextComponent textComposite = textParser.executeTextOperation(text);
         System.out.println(textComposite.toString());
         TextAction action = new TextAction();

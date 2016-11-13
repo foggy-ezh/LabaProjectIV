@@ -26,7 +26,11 @@ public class NonTerminalTextHandler extends AbstractTextHandler {
     public ITextComponent executeTextOperation(String text){
         String[] splitData = currentDataParser(text);
         for(String str : splitData){
-            textComponent.addComponent(successor.executeTextOperation(str));
+            System.out.println("Split pattern " + splitPattern.toString());
+            System.out.println("Str " + str);
+            ITextComponent component = successor.executeTextOperation(str);
+            System.out.println(component.toString());
+            textComponent.addComponent(component);
         }
         return textComponent;
     }
