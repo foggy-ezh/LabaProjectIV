@@ -72,7 +72,7 @@ public class TextAction {
                 }
             } else {
                 if (((ComponentLeaf) component).getTypeName().equals("WORD")) {
-                    allWords.add((component.toString()));
+                    allWords.add((component.toString().toLowerCase()));
                 }
             }
         }

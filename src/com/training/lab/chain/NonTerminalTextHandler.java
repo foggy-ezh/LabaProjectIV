@@ -10,33 +10,33 @@ import java.util.regex.Pattern;
  */
 public class NonTerminalTextHandler extends AbstractTextHandler {
     private Pattern splitPattern;
-    private ITextComponent textComponent= new TextComposite();
+    private ITextComponent textComponent = new TextComposite();
 
     public NonTerminalTextHandler(String regex) {
         super.successor = new TerminalTextHandler();
-        this.splitPattern= Pattern.compile(regex);
+        this.splitPattern = Pattern.compile(regex);
     }
 
     public NonTerminalTextHandler(AbstractTextHandler successor, String regex) {
         super.successor = successor;
-        this.splitPattern= Pattern.compile(regex);
+        this.splitPattern = Pattern.compile(regex);
     }
 
     @Override
-    public ITextComponent executeTextOperation(String text){
-        String[] splitData = currentDataParser(text);
-        for(String str : splitData){
-            System.out.println("Split pattern " + splitPattern.toString());
-            System.out.println("Str " + str);
-            ITextComponent component = successor.executeTextOperation(str);
-            System.out.println(component.toString());
-            textComponent.addComponent(component);
+    public ITextComponent executeTextOperation(String text) {
+        try {
+            String[] splitData = currentDataParser(text);
+            for (String str : splitData) {
+                textComponent.addComponent(successor.executeTextOperation(str));
+            }
+            return textComponent;
+        } finally {
+            textComponent = new TextComposite();
         }
-        return textComponent;
     }
 
-    private String[] currentDataParser(String currentData){
-        if(splitPattern!= null){
+    private String[] currentDataParser(String currentData) {
+        if (splitPattern != null) {
             return splitPattern.split(currentData);
         }
         return null;

@@ -43,36 +43,6 @@ public class TextActionTest {
         action.DeleteLexeme(list, "c".charAt(0), 2);
         System.out.println(list.toString());
         Assert.assertEquals(list.toString(), "[[b2, a1], [b2, a1]]");
-//        try {
-/*            String str = textFileReader.getTextFromFile();
-            String[] str2 = Pattern.compile(Constant.TEXT_SPLIT_REGEX).split(str);
-            System.out.println(Arrays.toString(Pattern.compile(Constant.TEXT_SPLIT_REGEX).split(str)));
-            System.out.println(str2[2].codePointAt(0));
-            String[] str3 = Pattern.compile(Constant.PARAGRAPH_SPLIT_REGEX).split(str2[1]);
-            System.out.println(Arrays.toString(Pattern.compile(Constant.PARAGRAPH_SPLIT_REGEX).split(str2[1])));
-            String[] str4 = Pattern.compile(Constant.SENTENCE_SPLIT_REGEX).split(str3[0]);
-            System.out.println(Arrays.toString(Pattern.compile(Constant.SENTENCE_SPLIT_REGEX).split(str3[0])));*/
-/*            Matcher m = Constant.MATH_EXPRESSION_PATTERN.matcher("123fs24345");
-            System.out.println(m.matches());
-        int i = 10;
-        i--;
-        StringBuilder numberCotnainer = new StringBuilder("abc");
-        AbstractMathOperation math = new MathOperationPlus();
-        System.out.println((math.getClass()==MathOperationPlus.class)+"sfsdf "+i+numberConainer);
-        if (true){
-            numberConainer.insert(0,"-");
-        }
-        --i;
-        System.out.println("potom - "+numberConainer+i);
-        String str = "13+(13--)";
-        Matcher m1 = Pattern.compile("\\d--").matcher(str);
-        while(m1.find()){
-        }
-        m1.replaceFirst("\\d-1");
-        System.out.println(str);*/
-//        }catch (CantReadDataFileException e){
-//            Assert.fail(e.getMessage(),e);
-//        }
     }
 
 }
