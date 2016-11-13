@@ -1,8 +1,7 @@
 package com.training.lab.chain;
 
-import com.training.lab.composite.TextComponent;
+import com.training.lab.composite.ITextComponent;
 import com.training.lab.composite.TextComposite;
-import com.training.lab.exception.EmptyTextDataException;
 
 import java.util.regex.Pattern;
 
@@ -11,10 +10,11 @@ import java.util.regex.Pattern;
  */
 public class NonTerminalTextHandler extends AbstractTextHandler {
     private Pattern splitPattern;
-    private TextComponent textComponent= new TextComposite();
+    private ITextComponent textComponent= new TextComposite();
 
-    public NonTerminalTextHandler(Pattern splitPattern) {
-        this.splitPattern = splitPattern;
+    public NonTerminalTextHandler(String regex) {
+        super.successor = new TerminalTextHandler();
+        this.splitPattern= Pattern.compile(regex);
     }
 
     public NonTerminalTextHandler(AbstractTextHandler successor, String regex) {
@@ -23,7 +23,7 @@ public class NonTerminalTextHandler extends AbstractTextHandler {
     }
 
     @Override
-    public TextComponent executeTextOperation(String text) throws EmptyTextDataException{
+    public ITextComponent executeTextOperation(String text){
         String[] splitData = currentDataParser(text);
         for(String str : splitData){
             textComponent.addComponent(successor.executeTextOperation(str));

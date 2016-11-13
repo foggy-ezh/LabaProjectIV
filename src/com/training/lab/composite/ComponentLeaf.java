@@ -3,7 +3,7 @@ package com.training.lab.composite;
 /**
  * Created by USER on 02.11.2016.
  */
-public class ComponentLeaf implements TextComponent {
+public class ComponentLeaf implements ITextComponent {
     private ComponentLeafType type;
     private String textPart;
 
@@ -12,20 +12,12 @@ public class ComponentLeaf implements TextComponent {
         this.textPart = textPart;
     }
 
-    @Override
-    public void operation() {
+    public String getTypeName() {
+        return type.name();
     }
 
     @Override
-    public void addComponent(TextComponent c) {}
-
-    @Override
-    public void removeComponent(TextComponent c) {}
-
-    @Override
-    public Object getChild(int index) {
-        return null;
-    }
+    public void addComponent(ITextComponent c) {}
 
     @Override
     public String toString() {

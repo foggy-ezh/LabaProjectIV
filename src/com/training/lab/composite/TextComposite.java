@@ -5,25 +5,16 @@ import java.util.ArrayList;
 /**
  * Created by USER on 02.11.2016.
  */
-public class TextComposite implements TextComponent {
-    private ArrayList<TextComponent> textComponents = new ArrayList<>();
-    @Override
-    public void operation() {
+public class TextComposite implements ITextComponent {
+    private ArrayList<ITextComponent> textComponents = new ArrayList<>();
+
+    public ArrayList<ITextComponent> getTextComponents() {
+        return textComponents;
     }
 
     @Override
-    public void addComponent(TextComponent c) {
+    public void addComponent(ITextComponent c) {
         textComponents.add(c);
-    }
-
-    @Override
-    public void removeComponent(TextComponent c) {
-        textComponents.remove(c);
-    }
-
-    @Override
-    public Object getChild(int index) {
-        return textComponents.get(index);
     }
 
     @Override
