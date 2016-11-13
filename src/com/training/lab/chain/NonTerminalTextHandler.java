@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  */
 public class NonTerminalTextHandler extends AbstractTextHandler {
     private Pattern splitPattern;
-    private ITextComponent textComponent = new TextComposite();
+    private ITextComponent textComponent;
 
     public NonTerminalTextHandler(String regex) {
         super.successor = new TerminalTextHandler();
@@ -24,15 +24,12 @@ public class NonTerminalTextHandler extends AbstractTextHandler {
 
     @Override
     public ITextComponent executeTextOperation(String text) {
-        try {
-            String[] splitData = currentDataParser(text);
-            for (String str : splitData) {
-                textComponent.addComponent(successor.executeTextOperation(str));
-            }
-            return textComponent;
-        } finally {
-            textComponent = new TextComposite();
+        textComponent = new TextComposite();
+        String[] splitData = currentDataParser(text);
+        for (String str : splitData) {
+            textComponent.addComponent(successor.executeTextOperation(str));
         }
+        return textComponent;
     }
 
     private String[] currentDataParser(String currentData) {
