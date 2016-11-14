@@ -11,7 +11,6 @@ public class MathExpressionConverterTest {
     @Test
     public void convertExpression(){
         MathExpressionConverter converter = new MathExpressionConverter();
-        converter.convertExpression("13+(3++)");
-        Assert.assertEquals(converter.calculateExpression(), 17, 0.01);
+        Assert.assertEquals(converter.convertExpression("8+-9").calculateExpression(), -1, 0.1);
     }
 }
