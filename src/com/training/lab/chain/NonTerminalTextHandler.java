@@ -33,9 +33,6 @@ public class NonTerminalTextHandler extends AbstractTextHandler {
     }
 
     private String[] currentDataParser(String currentData) {
-        if (splitPattern != null) {
             return splitPattern.split(currentData);
-        }
-        return null;
     }
 }

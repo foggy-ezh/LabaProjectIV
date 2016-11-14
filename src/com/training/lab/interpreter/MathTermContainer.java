@@ -5,9 +5,9 @@ package com.training.lab.interpreter;
  */
 public class MathTermContainer extends AbstractMathOperation {
 
-    private int number;
+    private double number;
 
-    public MathTermContainer(int number) {this.number = number;}
+    public MathTermContainer(double number) {this.number = number;}
 
     @Override
     public void interpret(MathExpressionContext context) {
