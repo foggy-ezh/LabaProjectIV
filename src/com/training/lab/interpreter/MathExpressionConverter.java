@@ -59,12 +59,13 @@ public class MathExpressionConverter {
     private void addNumber(String expression, int position) {
         //Добавляем цифру в контейнер текущего числа
         numberContainer.append(expression.charAt(position));
-        if (position < expression.length()-1 && Character.isDigit(expression.charAt(position + 1))) { // Проверяет является ли следующий символ в исходной строке цифрой
+        //Проверяет является ли следующий символ в исходной строке цифрой
+        if (position < expression.length()-1 && Character.isDigit(expression.charAt(position + 1))) {
             return;
         }
         // Иначе если это конец текущего числа и следующий символ уже не цифра
         // проверяем будет ли число отрицательным(nextNumberIsNegative)
-        // добавляем число в очередь и очищаем контейнер
+        // добавляем число в конечную очередь и очищаем контейнер
         if (nextNumberIsNegative) {
             numberContainer.insert(0, "-");
             nextNumberIsNegative = false;
