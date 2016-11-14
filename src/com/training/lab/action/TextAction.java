@@ -22,7 +22,7 @@ public class TextAction {
                 //При первой встрече компонента Leaf с типом "WORD" меняем его с
                 //последним элементом типа "WORD", так как последний элемент предложения
                 //будет знаком пунктуации, то берем предпоследний элемент спика.
-                if (ComponentLeafType.WORD.equals(((ComponentLeaf) component).getTypeName())) {
+                if (ComponentLeafType.WORD.toString().equals(((ComponentLeaf) component).getTypeName())) {
                     text.set(text.indexOf(component), text.get(text.size() - 2));
                     text.set((text.size() - 2), component);
                     return;
@@ -38,7 +38,7 @@ public class TextAction {
             if (component.getClass().equals(TextComposite.class)) {
                 DeleteLexeme(((TextComposite) component).getTextComponents(), firstLetter, length);
             } else {
-                if (ComponentLeafType.WORD.equals(((ComponentLeaf) component).getTypeName()) &&
+                if (ComponentLeafType.WORD.toString().equals(((ComponentLeaf) component).getTypeName()) &&
                         component.toString().charAt(0) == firstLetter &&
                         component.toString().length() == length) {
                     it.remove();
@@ -72,7 +72,7 @@ public class TextAction {
                     allWords.addAll(temp);
                 }
             } else {
-                if (ComponentLeafType.WORD.equals(((ComponentLeaf) component).getTypeName())) {
+                if (ComponentLeafType.WORD.toString().equals(((ComponentLeaf) component).getTypeName())) {
                     allWords.add((component.toString().toLowerCase()));
                 }
             }
